@@ -110,13 +110,12 @@ defmodule FitbodAppWeb.UserControllerTest do
                  "id" => current_user.id,
                  "email" => current_user.email
                }
-            } = json_response(conn, 200)["data"]
+             } == json_response(conn, 200)["data"]
     end
 
     test "renders errors when user credentials are bad", %{conn: conn} do
       conn = post(conn, Routes.user_path(conn, :sign_in, %{email: "non-existent email", password: ""}))
-
-      assert %{"detail" => "Wrong email or password"} = json_response(conn, 401)["errors"]
+      assert %{"detail" => "Wrong email or password"} == json_response(conn, 401)["errors"]
     end
   end
 

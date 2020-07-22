@@ -38,6 +38,28 @@ defmodule FitbodApp.Auth do
   def get_user!(id), do: Repo.get!(User, id)
 
   @doc """
+  Gets a user by email.
+
+  ## Examples
+
+      iex> get_by_email("email@email.com")
+      %User{}
+
+      iex> get_by_email("doesnt_exist@email.com")
+      {:error, :not_found}
+  """
+
+  def get_by_email(email) do
+    case Repo.get_by(User, email: email) do
+      nil ->
+        {:error, :not_found}
+
+      user ->
+        {:ok, user}
+    end
+  end
+
+  @doc """
   Creates a user.
 
   ## Examples
@@ -113,6 +135,7 @@ defmodule FitbodApp.Auth do
   """
   def authenticate_user(email, password) do
     query = from(u in User, where: u.email == ^email)
+
     query
     |> Repo.one()
     |> verify_password(password)
@@ -130,5 +153,4 @@ defmodule FitbodApp.Auth do
       {:error, "Wrong email or password"}
     end
   end
-
 end

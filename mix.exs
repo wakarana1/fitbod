@@ -47,7 +47,10 @@ defmodule FitbodApp.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:bcrypt_elixir, "~> 2.0"}
+      {:bcrypt_elixir, "~> 2.0"},
+      {:credo, "~> 1.4.0", only: [:dev, :test], runtime: false},
+      {:bodyguard, "~> 2.4"},
+      {:poison, "~> 4.0.1"}
     ]
   end
 

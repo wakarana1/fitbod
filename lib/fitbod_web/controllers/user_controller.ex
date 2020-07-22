@@ -11,8 +11,8 @@ defmodule FitbodAppWeb.UserController do
     render(conn, "index.json", users: users)
   end
 
-  def create(conn, %{"user" => user_params}) do
-    with {:ok, %User{} = user} <- Auth.create_user(user_params) do
+  def create(conn, %{"data" => %{"attributes" => user_attrs}}) do
+    with {:ok, %User{} = user} <- Auth.create_user(user_attrs) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.user_path(conn, :show, user))
@@ -25,7 +25,7 @@ defmodule FitbodAppWeb.UserController do
     render(conn, "show.json", user: user)
   end
 
-  def update(conn, %{"id" => id, "user" => user_params}) do
+  def update(conn, %{"id" => id, "data" => %{"attributes" => user_params}}) do
     user = Auth.get_user!(id)
 
     with {:ok, %User{} = user} <- Auth.update_user(user, user_params) do

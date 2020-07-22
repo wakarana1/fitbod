@@ -27,12 +27,16 @@ defmodule FitbodAppWeb.Router do
   # Other scopes may use custom stacks.
   scope "/api", FitbodAppWeb do
     pipe_through :api
+    post "/users/sign_up", UserController, :create
     post "/users/sign_in", UserController, :sign_in
   end
 
   scope "/api", FitbodAppWeb do
     pipe_through [:api, :api_auth]
-    resources "/users", UserController, except: [:new, :edit]
+
+    resources "/users", UserController, except: [:new, :edit] do
+      resources "/workouts", WorkoutController
+    end
   end
 
   defp ensure_authenticated(conn, _opts) do
@@ -43,7 +47,7 @@ defmodule FitbodAppWeb.Router do
     else
       conn
       |> put_status(:unauthorized)
-      |> put_view(MyAppWeb.ErrorView)
+      |> put_view(FitbodAppWeb.ErrorView)
       |> render("401.json", message: "Unauthenticated user")
       |> halt()
     end

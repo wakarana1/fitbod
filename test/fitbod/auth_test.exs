@@ -6,8 +6,8 @@ defmodule FitbodApp.AuthTest do
   describe "users" do
     alias FitbodApp.Auth.User
 
-    @valid_attrs %{email: "some email", password: "password"}
-    @update_attrs %{email: "some updated email", password: "password"}
+    @valid_attrs %{email: "email@email.com", password: "password"}
+    @update_attrs %{email: "updated@email.com", password: "password"}
     @invalid_attrs %{email: nil, password: nil}
 
     def user_fixture(attrs \\ %{}) do
@@ -31,7 +31,7 @@ defmodule FitbodApp.AuthTest do
 
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Auth.create_user(@valid_attrs)
-      assert user.email == "some email"
+      assert user.email == "email@email.com"
       assert Bcrypt.verify_pass("password", user.password_hash)
     end
 
@@ -42,7 +42,7 @@ defmodule FitbodApp.AuthTest do
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
       assert {:ok, %User{} = user} = Auth.update_user(user, @update_attrs)
-      assert user.email == "some updated email"
+      assert user.email == "updated@email.com"
       assert Bcrypt.verify_pass("password", user.password_hash)
     end
 

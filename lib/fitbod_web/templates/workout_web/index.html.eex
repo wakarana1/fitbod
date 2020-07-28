@@ -1,0 +1,28 @@
+<h1>Listing Workouts for <%= @user.email %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Workout duration</th>
+      <th>Workout date</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for workout <- @workouts do %>
+    <tr>
+      <td><%= workout.workout_duration %></td>
+      <td><%= workout.workout_date %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.user_web_workout_web_path(@conn, :show, workout.user_id, workout) %></span>
+        <span><%= link "Edit", to: Routes.user_web_workout_web_path(@conn, :edit, workout.user_id, workout) %></span>
+        <span><%= link "Delete", to: Routes.user_web_workout_web_path(@conn, :delete, workout.user_id, workout), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Workout", to: Routes.user_web_workout_web_path(@conn, :new, @user.id) %></span>

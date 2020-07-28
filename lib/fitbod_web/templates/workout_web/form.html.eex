@@ -1,0 +1,24 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :workout_duration %>
+  <%= number_input f, :workout_duration %>
+  <%= error_tag f, :workout_duration %>
+
+  <%= label f, :workout_date %>
+  <%= date_select f, :workout_date, year: [options: 1900..2020] %>
+  <%#= date_select f, :workout_date, builder: fn b -> %>
+      <%#= b.(:month, prompt: "Month") %>
+      <%#= b.(:day, prompt: "Date") %>
+      <%#= b.(:year, prompt: "Year") %>
+    <%# end %>
+  <%= error_tag f, :workout_date %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>

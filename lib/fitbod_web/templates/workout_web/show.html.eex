@@ -1,0 +1,18 @@
+<h1>Show Workout</h1>
+
+<ul>
+
+  <li>
+    <strong>Workout duration:</strong>
+    <%= @workout.workout_duration %>
+  </li>
+
+  <li>
+    <strong>Workout date:</strong>
+    <%= @workout.workout_date %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.user_web_workout_web_path(@conn, :edit, @workout.user_id, @workout) %></span>
+<span><%= link "Back", to: Routes.user_web_workout_web_path(@conn, :index, @workout.user_id) %></span>

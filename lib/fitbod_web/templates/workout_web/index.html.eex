@@ -1,12 +1,10 @@
-<h1>Listing Workouts for <%= @user.email %></h1>
+<h1>Workouts for <%= @user.email %></h1>
 
 <table>
   <thead>
     <tr>
       <th>Workout duration</th>
       <th>Workout date</th>
-
-      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -26,4 +24,4 @@
 </table>
 
 <span><%= link "New Workout", to: Routes.user_web_workout_web_path(@conn, :new, @user.id), class: "button" %></span>
-<span><%= link "Back", to: Routes.user_web_path(@conn, :index), class: "button" %></span>
+<span><%= link "User Home", to: Routes.user_web_path(@conn, :show, @user.id), class: "button" %></span>

@@ -85,8 +85,6 @@ defmodule FitbodApp.Activities do
       %Workout{}
       |> Workout.changeset(attrs)
       |> Repo.insert()
-
-      # |> IO.inspect(label: "create")
     end
   end
 
@@ -104,8 +102,6 @@ defmodule FitbodApp.Activities do
   """
   def update_workout(user, %Workout{} = workout, attrs) do
     with :ok <- Bodyguard.permit(Activities, :update_workout, user, workout) do
-      # IO.inspect(attrs)
-
       workout
       |> Workout.changeset(attrs)
       |> Repo.update()

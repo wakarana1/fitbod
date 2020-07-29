@@ -10,7 +10,7 @@
   <%= error_tag f, :workout_duration %>
 
   <%= label f, :workout_date %>
-  <%= date_select f, :workout_date, year: [options: 1900..2020] %>
+  <%= date_select f, :workout_date, year: [options: 2010..2020] %>
   <%#= date_select f, :workout_date, builder: fn b -> %>
       <%#= b.(:month, prompt: "Month") %>
       <%#= b.(:day, prompt: "Date") %>

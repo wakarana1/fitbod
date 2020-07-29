@@ -14,5 +14,6 @@
 
 </ul>
 
-<span><%= link "Edit", to: Routes.user_web_workout_web_path(@conn, :edit, @workout.user_id, @workout), class: "button" %></span>
-<span><%= link "Workout Home", to: Routes.user_web_workout_web_path(@conn, :index, @workout.user_id), class: "button" %></span>
+<div><%= link "Edit", to: Routes.user_web_workout_web_path(@conn, :edit, @workout.user_id, @workout), class: "button" %></div>
+<div><%= link "Delete", to: Routes.user_web_workout_web_path(@conn, :delete, @workout.user_id, @workout), method: :delete, data: [confirm: "Are you sure?"], class: "button" %></div>
+<div><%= link "Workout Home", to: Routes.user_web_workout_web_path(@conn, :index, @workout.user_id), class: "button" %></div>

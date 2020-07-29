@@ -1,6 +1,6 @@
 # FitbodApp
 
-To view the "admin" page, the website is https://peaceful-badlands-63941.herokuapp.com/users
+To view the "admin" page, the website is https://peaceful-badlands-63941.herokuapp.com/
 
 ## CURL commands for API
 

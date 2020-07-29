@@ -47,7 +47,6 @@ defmodule FitbodAppWeb.WorkoutWebController do
   end
 
   def update(conn, %{"user_web_id" => user_id, "id" => id, "workout" => workout_params}) do
-    # IO.inspect(workout_params, label: "update")
     user = Auth.get_user!(user_id)
     {:ok, workout} = Activities.get_workout(user, id)
 

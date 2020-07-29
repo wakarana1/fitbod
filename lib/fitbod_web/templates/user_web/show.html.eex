@@ -1,7 +1,7 @@
 <h1> <%= @user.email %> </h1>
 
 <span><%= link "Edit User", to: Routes.user_web_path(@conn, :edit, @user), class: "button"%></span>
-
+<span><%= link "Delete User", to: Routes.user_web_path(@conn, :delete, @user), method: :delete, data: [confirm: "Are you sure?"], class: "button" %></span>
 
 <table>
   <thead>
@@ -19,9 +19,9 @@
       <td><%= workout.workout_duration %></td>
 
       <td>
-        <span><%= link "Show", to: Routes.user_web_workout_web_path(@conn, :show, @user.id, workout) %></span>
-        <span><%#= link "Edit", to: Routes.user_workout_web_path(@conn, :edit, @user.id, workout) %></span>
-        <span><%#= link "Delete", to: Routes.user_workout_web_path(@conn, :delete, @user.id, workout), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link "Show", to: Routes.user_web_workout_web_path(@conn, :show, @user.id, workout), class: "button" %></span>
+        <span><%= link "Edit", to: Routes.user_web_workout_web_path(@conn, :edit, @user.id, workout), class: "button" %></span>
+        <span><%= link "Delete", to: Routes.user_web_workout_web_path(@conn, :delete, @user.id, workout), method: :delete, data: [confirm: "Are you sure?"], class: "button" %></span>
       </td>
     </tr>
 <% end %>

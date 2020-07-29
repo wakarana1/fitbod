@@ -21,7 +21,8 @@ defmodule FitbodAppWeb.Router do
 
   scope "/", FitbodAppWeb do
     pipe_through :browser
-    live "/", PageLive, :index
+
+    get "/", UserWebController, :index
 
     resources "/users", UserWebController do
       resources "/workouts", WorkoutWebController
